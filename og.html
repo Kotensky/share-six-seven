@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Source for og.png (1200×630 social share card). Regenerate with headless Chrome:
+     python3 -m http.server 8765  →  Chrome --headless=new --window-size=1200,630
+     --screenshot=og.png http://localhost:8765/og.html -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box; margin:0; padding:0}
+  html,body{width:1200px; height:630px; overflow:hidden}
+  body{
+    font-family:'Nunito',sans-serif; color:#3A2B4D;
+    background:linear-gradient(150deg,#FBEEFF,#EEF4FF);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:26px;
+  }
+  .caps{display:flex; align-items:center; gap:22px}
+  .cap{
+    --from:#FF9ECF; --to:#FF4D96; --ledge:#D42E75; --digit:#fff;
+    position:relative; border-radius:38px; background:linear-gradient(var(--from),var(--to));
+    box-shadow:0 14px 0 var(--ledge), 0 26px 44px color-mix(in srgb, var(--ledge) 42%, transparent);
+    font-family:'Baloo 2',sans-serif; font-weight:800; color:var(--digit);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .cap::before{content:''; position:absolute; inset:0; border-radius:inherit;
+    background:linear-gradient(rgba(255,255,255,.42), rgba(255,255,255,0) 46%)}
+  .c6{width:150px; height:150px; font-size:82px}
+  .c7{--from:#7FD8FF; --to:#34B6FF; --ledge:#1F86D6; width:150px; height:150px; font-size:82px}
+  .c67{--from:#FFDE6B; --to:#FFC01E; --ledge:#E09A00; --digit:#7A4A00;
+    width:216px; height:150px; font-size:70px; letter-spacing:.06em}
+  h1{font-family:'Baloo 2',sans-serif; font-weight:800; font-size:88px; letter-spacing:-.02em; line-height:1}
+  p{font-weight:800; font-size:30px; color:#7a6f88}
+  .foot{margin-top:2px; font-weight:800; font-size:22px; color:#FF4D96}
+</style>
+</head>
+<body>
+  <div class="caps">
+    <div class="cap c6">6</div>
+    <div class="cap c7">7</div>
+    <div class="cap c67">6 7</div>
+  </div>
+  <h1>Six Seven 67</h1>
+  <p>Tap a button. Say the meme out loud. 🔥</p>
+  <div class="foot">Free on Google Play</div>
+</body>
+</html>
