@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Six Seven 67 — Say the Meme</title>
+<meta name="description" content="Tap 6, 7 or 6 7 and say the meme out loud in silly voices. The 6 7 soundboard for Android.">
+<meta property="og:title" content="Six Seven 67 — Say the Meme">
+<meta property="og:description" content="Tap 6, 7 or 6 7 and say the meme out loud. The 6 7 soundboard.">
+<meta property="og:type" content="website">
+<!-- For rich link previews in chats, add a 1200×630 PNG next to this file and set the ABSOLUTE url:
+<meta property="og:image" content="https://USERNAME.github.io/REPO/og.png"> -->
+<meta name="theme-color" content="#FBEEFF">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='86'>🔊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg1:#FBEEFF; --bg2:#EEF4FF; --ink:#3A2B4D; --sub:#7a6f88; --accent:#FF4D96;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  html,body{min-height:100%}
+  body{
+    font-family:'Nunito',system-ui,-apple-system,sans-serif; color:var(--ink);
+    min-height:100svh; background:linear-gradient(160deg,var(--bg1),var(--bg2));
+    display:flex; align-items:center; justify-content:center;
+    padding:36px 20px; overflow-x:hidden; -webkit-tap-highlight-color:transparent;
+  }
+  .wrap{width:100%; max-width:560px; text-align:center}
+  h1{font-family:'Baloo 2',sans-serif; font-weight:800; font-size:clamp(42px,12vw,72px); letter-spacing:-.02em; line-height:1}
+  .tag{margin-top:12px; font-weight:700; font-size:clamp(15px,4.4vw,19px); color:var(--sub)}
+
+  .caps{margin:36px auto 4px; display:grid; gap:16px; justify-items:center; max-width:360px}
+  .row{display:flex; gap:16px; justify-content:center; width:100%}
+  .cap{
+    --from:#FF9ECF; --to:#FF4D96; --ledge:#D42E75; --digit:#fff;
+    border:0; cursor:pointer; position:relative; user-select:none; -webkit-touch-callout:none;
+    touch-action:manipulation;
+    font-family:'Baloo 2',sans-serif; font-weight:800; color:var(--digit);
+    border-radius:30px; background:linear-gradient(var(--from),var(--to));
+    box-shadow:0 10px 0 var(--ledge), 0 20px 34px color-mix(in srgb, var(--ledge) 42%, transparent);
+    transition:transform .09s ease, box-shadow .09s ease;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .cap::before{
+    content:''; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+    background:linear-gradient(rgba(255,255,255,.42), rgba(255,255,255,0) 46%);
+  }
+  .cap:active{
+    transform:translateY(6px);
+    box-shadow:0 4px 0 var(--ledge), 0 10px 18px color-mix(in srgb, var(--ledge) 34%, transparent);
+  }
+  .c6{width:120px; height:120px; font-size:64px}
+  .c7{--from:#7FD8FF; --to:#34B6FF; --ledge:#1F86D6; width:120px; height:120px; font-size:64px}
+  .c67{--from:#FFDE6B; --to:#FFC01E; --ledge:#E09A00; --digit:#7A4A00;
+    width:100%; max-width:256px; height:104px; font-size:52px; letter-spacing:.06em}
+
+  .cta{margin-top:36px; display:flex; flex-direction:column; align-items:center; gap:14px}
+  .play{
+    display:inline-flex; align-items:center; gap:12px; text-decoration:none;
+    background:var(--ink); color:#fff; font-weight:800; font-size:17px;
+    padding:16px 26px; border-radius:16px; box-shadow:0 12px 26px rgba(58,43,77,.28);
+    transition:transform .12s ease;
+  }
+  .play:active{transform:scale(.97)}
+  .play svg{display:block}
+  .soon{font-weight:800; color:var(--sub); font-size:14px}
+  .soon .pill{display:inline-block; background:rgba(58,43,77,.08); padding:7px 14px; border-radius:100px}
+
+  .features{margin-top:32px; color:var(--sub); font-weight:700; font-size:14px; line-height:1.7}
+  footer{margin-top:42px; color:var(--sub); font-size:12px; font-weight:700}
+  footer a{color:var(--accent); text-decoration:none}
+
+  /* On iPhone/iPad the app isn't out yet: lead with "coming soon", soften the Play button. */
+  .ios .cta{gap:16px}
+  .ios .soon{order:-1; font-size:16px; color:var(--ink)}
+  .ios .soon .pill{background:var(--accent); color:#fff}
+  .ios .play{background:rgba(58,43,77,.10); color:var(--ink); box-shadow:none; font-size:15px; padding:12px 20px}
+
+  .burst{position:fixed; pointer-events:none; z-index:9; font-size:24px; will-change:transform,opacity}
+  @media (prefers-reduced-motion:reduce){.cap,.play{transition:none}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <h1>Six Seven 67</h1>
+  <p class="tag">Tap a button. Say the meme out loud. <b>6&nbsp;7</b> 🔥</p>
+
+  <div class="caps">
+    <div class="row">
+      <button class="cap c6" data-say="6" aria-label="Six">6</button>
+      <button class="cap c7" data-say="7" aria-label="Seven">7</button>
+    </div>
+    <button class="cap c67" data-say="67" aria-label="Six seven">6 7</button>
+  </div>
+
+  <div class="cta">
+    <a class="play" id="play" href="https://play.google.com/store/apps/details?id=com.mbro.sixseven">
+      <svg width="16" height="18" viewBox="0 0 16 18" aria-hidden="true"><path d="M0 0 L16 9 L0 18 Z" fill="currentColor"/></svg>
+      Get it on Google&nbsp;Play
+    </a>
+    <div class="soon"><span class="pill">🍎 iOS — coming soon</span></div>
+  </div>
+
+  <p class="features">Three big buttons · silly voices · home-screen widgets</p>
+
+  <footer>
+    © 2026 Six Seven 67 ·
+    <a href="https://sites.google.com/view/sixseven67-privacy" target="_blank" rel="noopener">Privacy</a>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var isAndroid = /Android/i.test(ua);
+  document.documentElement.className = isIOS ? 'ios' : isAndroid ? 'android' : 'desktop';
+
+  var EMOJI = ['🍬','🍭','🌈','✨','💖','⭐'];
+  function burst(x, y){
+    for (var i = 0; i < 10; i++){
+      var s = document.createElement('span');
+      s.className = 'burst';
+      s.textContent = EMOJI[(Math.random() * EMOJI.length) | 0];
+      s.style.left = (x - 12) + 'px';
+      s.style.top = (y - 12) + 'px';
+      document.body.appendChild(s);
+      var ang = Math.random() * Math.PI * 2;
+      var dist = 60 + Math.random() * 90;
+      var dx = Math.cos(ang) * dist;
+      var dy = Math.sin(ang) * dist - 40;
+      s.animate([
+        { transform: 'translate(0,0) scale(.6)', opacity: 1 },
+        { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(1.25)', opacity: 0 }
+      ], { duration: 700 + Math.random() * 300, easing: 'cubic-bezier(.2,.7,.3,1)', fill: 'forwards' });
+      (function(el){ setTimeout(function(){ el.remove(); }, 1200); })(s);
+    }
+  }
+
+  document.querySelectorAll('.cap').forEach(function(cap){
+    cap.addEventListener('pointerdown', function(){
+      var r = cap.getBoundingClientRect();
+      burst(r.left + r.width / 2, r.top + r.height / 2);
+      // Want the caps to actually SAY it? Drop six.mp3 / seven.mp3 / six_seven.mp3 next to this
+      // file and uncomment — turns the page into a playable demo:
+      // var f = cap.dataset.say === '6' ? 'six.mp3' : cap.dataset.say === '7' ? 'seven.mp3' : 'six_seven.mp3';
+      // new Audio(f).play().catch(function(){});
+    });
+  });
+})();
+</script>
+</body>
+</html>
