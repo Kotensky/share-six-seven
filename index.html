@@ -139,14 +139,25 @@
     }
   }
 
+  // Voice: Alyona (own recording), preloaded so a tap replays instantly.
+  var SOUND = { '6': 'six.mp3', '7': 'seven.mp3', '67': 'six_seven.mp3' };
+  var audio = {};
+  Object.keys(SOUND).forEach(function(k){
+    var a = new Audio(SOUND[k]);
+    a.preload = 'auto';
+    audio[k] = a;
+  });
+
   document.querySelectorAll('.cap').forEach(function(cap){
     cap.addEventListener('pointerdown', function(){
       var r = cap.getBoundingClientRect();
       burst(r.left + r.width / 2, r.top + r.height / 2);
-      // Want the caps to actually SAY it? Drop six.mp3 / seven.mp3 / six_seven.mp3 next to this
-      // file and uncomment — turns the page into a playable demo:
-      // var f = cap.dataset.say === '6' ? 'six.mp3' : cap.dataset.say === '7' ? 'seven.mp3' : 'six_seven.mp3';
-      // new Audio(f).play().catch(function(){});
+      var a = audio[cap.dataset.say];
+      if (a){
+        try { a.currentTime = 0; } catch(e){}
+        var p = a.play();
+        if (p && p.catch) p.catch(function(){});
+      }
     });
   });
 })();
