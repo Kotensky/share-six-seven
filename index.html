@@ -34,7 +34,9 @@
   h1{font-family:'Baloo 2',sans-serif; font-weight:800; font-size:clamp(42px,12vw,72px); letter-spacing:-.02em; line-height:1}
   .tag{margin-top:12px; font-weight:700; font-size:clamp(15px,4.4vw,19px); color:var(--sub)}
 
-  .caps{margin:36px auto 4px; display:grid; gap:16px; justify-items:center; max-width:360px}
+  /* 6/7 caps drop a 10px ledge shadow into the gap below, so the vertical gap needs
+     ledge + 16px to read the same as the 16px horizontal gap between 6 and 7. */
+  .caps{margin:36px auto 4px; display:grid; gap:26px; justify-items:center; max-width:360px}
   .row{display:flex; gap:16px; justify-content:center; width:100%}
   .cap{
     --from:#FF9ECF; --to:#FF4D96; --ledge:#D42E75; --digit:#fff;
@@ -57,7 +59,7 @@
   .c6{width:120px; height:120px; font-size:64px}
   .c7{--from:#7FD8FF; --to:#34B6FF; --ledge:#1F86D6; width:120px; height:120px; font-size:64px}
   .c67{--from:#FFDE6B; --to:#FFC01E; --ledge:#E09A00; --digit:#7A4A00;
-    width:100%; max-width:256px; height:104px; font-size:52px; letter-spacing:.06em}
+    width:100%; max-width:256px; height:80px; font-size:44px; letter-spacing:.06em; border-radius:26px}
 
   .cta{margin-top:36px; display:flex; flex-direction:column; align-items:center; gap:14px}
   .play{
@@ -67,22 +69,17 @@
     transition:transform .12s ease;
   }
   .play:active{transform:scale(.97)}
-  .play svg{display:block}
+  .play svg{display:block; width:20px; height:22px}
   .soon{font-weight:800; color:var(--sub); font-size:14px}
-  .soon .pill{display:inline-block; background:rgba(58,43,77,.08); padding:7px 14px; border-radius:100px}
+  .soon .pill{display:inline-flex; align-items:center; gap:8px; background:rgba(58,43,77,.08); padding:7px 14px; border-radius:100px}
+  .soon .pill svg{display:block; width:14px; height:17px; fill:currentColor}
 
   .features{margin-top:32px; color:var(--sub); font-weight:700; font-size:14px; line-height:1.7}
   footer{margin-top:42px; color:var(--sub); font-size:12px; font-weight:700}
   footer a{color:var(--accent); text-decoration:none}
 
-  /* On iPhone/iPad the app isn't out yet: lead with "coming soon", soften the Play button. */
-  .ios .cta{gap:16px}
-  .ios .soon{order:-1; font-size:16px; color:var(--ink)}
-  .ios .soon .pill{background:var(--accent); color:#fff}
-  .ios .play{background:rgba(58,43,77,.10); color:var(--ink); box-shadow:none; font-size:15px; padding:12px 20px}
-
   .burst{position:fixed; pointer-events:none; z-index:9; font-size:24px; will-change:transform,opacity}
-  @media (prefers-reduced-motion:reduce){.cap,.play{transition:none}}
+  @media (prefers-reduced-motion:reduce){.cap,.store{transition:none}}
 </style>
 </head>
 <body>
@@ -100,10 +97,18 @@
 
   <div class="cta">
     <a class="play" id="play" href="https://play.google.com/store/apps/details?id=com.mbro.sixseven">
-      <svg width="16" height="18" viewBox="0 0 16 18" aria-hidden="true"><path d="M0 0 L16 9 L0 18 Z" fill="currentColor"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="#00C4FF" d="M1.6.6 13.4 12 1.6 23.4A2 2 0 0 1 1 22V2A2 2 0 0 1 1.6.6Z"/>
+        <path fill="#00E76F" d="M17.5 8.2 3.6.4a2 2 0 0 0-2 .2L13.4 12Z"/>
+        <path fill="#FFC900" d="m17.5 15.8 4.5-2.5a1.5 1.5 0 0 0 0-2.6l-4.5-2.5L13.4 12Z"/>
+        <path fill="#FF3A44" d="M1.6 23.4a2 2 0 0 0 2 .2l13.9-7.8L13.4 12Z"/>
+      </svg>
       Get it on Google&nbsp;Play
     </a>
-    <div class="soon"><span class="pill">🍎 iOS — coming soon</span></div>
+    <div class="soon"><span class="pill">
+      <svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.7-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+      iOS — coming soon
+    </span></div>
   </div>
 
   <p class="features">Three big buttons · silly voices · home-screen widgets</p>
